@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+  <title>patent-3</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; }
+    #gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 24px;
+    }
+    #gate .box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 24px 28px;
+      border-radius: 12px;
+      max-width: 420px;
+    }
+    #gate .retry {
+      margin-top: 12px;
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 8px;
+      background: #0ea5e9;
+      color: #ffffff;
+      cursor: pointer;
+      display: none;
+    }
+    #deck { display: none; width: 100%; height: 100%; border: 0; }
+  </style>
+</head>
+<body>
+  <div id="gate">
+    <div class="box">
+      <div class="msg">需要访问密码</div>
+      <button class="retry" type="button">重新输入</button>
+    </div>
+  </div>
+  <iframe id="deck" src="patent-3.html" title="Patent 3"></iframe>
+  <script>
+  (() => {
+    const pass = "unnc2026";
+    const gate = document.getElementById("gate");
+    const deck = document.getElementById("deck");
+    const msg = gate.querySelector(".msg");
+    const retry = gate.querySelector(".retry");
+
+    const showDeck = () => {
+      gate.style.display = "none";
+      deck.style.display = "block";
+    };
+
+    const ask = () => {
+      const input = prompt("请输入访问密码");
+      if (input === pass) {
+        showDeck();
+        return;
+      }
+      msg.textContent = "访问受限";
+      retry.style.display = "inline-block";
+    };
+
+    retry.addEventListener("click", () => {
+      msg.textContent = "需要访问密码";
+      ask();
+    });
+
+    ask();
+  })();
+  </script>
+</body>
+</html>
