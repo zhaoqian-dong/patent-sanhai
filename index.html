@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>专利展示主页 | 浙江三海科技有限公司</title>
+  <meta name="description" content="浙江三海科技有限公司专利展示主页，提供三项专利的演示入口。">
+  <style>
+    @import url("https://fonts.bunny.net/css?family=playfair-display:600,700|source-sans-3:400,600|noto-sans-sc:400,600&display=swap");
+
+    :root {
+      --ink: #0f172a;
+      --ink-soft: #1f2937;
+      --mist: #f5f7fb;
+      --paper: #f8f5ef;
+      --accent: #0f6b8f;
+      --accent-2: #b98c5a;
+      --line: rgba(15, 23, 42, 0.12);
+      --shadow: 0 22px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Source Sans 3", "Noto Sans SC", sans-serif;
+      background:
+        radial-gradient(900px 520px at 80% -10%, rgba(15, 107, 143, 0.12), transparent 60%),
+        radial-gradient(700px 500px at -10% 10%, rgba(185, 140, 90, 0.12), transparent 55%),
+        linear-gradient(180deg, var(--paper) 0%, var(--mist) 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+        linear-gradient(90deg, transparent 23px, rgba(15, 23, 42, 0.05) 24px);
+      background-size: 24px 24px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(6px);
+      animation: rise 0.6s ease-out both;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .brand span {
+      font-size: 16px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 107, 143, 0.3);
+      background: rgba(15, 107, 143, 0.08);
+      color: var(--accent);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 28px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", "Noto Sans SC", serif;
+      font-size: clamp(28px, 3.4vw, 44px);
+      margin: 0 0 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .hero .note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      animation: rise 0.7s ease-out both;
+      animation-delay: 0.1s;
+    }
+
+    .hero-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .card {
+      padding: 22px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: rise 0.7s ease-out both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+
+    .card .num {
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.4;
+      font-family: "Playfair Display", "Noto Sans SC", serif;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .card a {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(120deg, var(--accent), #14532d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 18px rgba(15, 107, 143, 0.25);
+    }
+
+    .card a:hover { transform: translateY(-2px); }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: rgba(15, 23, 42, 0.6);
+      font-size: 13px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        专利展示主页
+        <span>浙江三海科技有限公司</span>
+      </div>
+      <div class="tag">访问需口令 · 商务版</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>重点专利演示入口</h1>
+        <p>
+          本主页用于展示三项核心专利的技术方案与授权策略，入口均为商务演示版本。
+          如需授权评估、落地对接或材料补充，请联系讲解人获取支持。
+        </p>
+        <div class="note">提示：每次访问都会要求输入口令。</div>
+      </div>
+      <aside class="hero-card">
+        <h3>导航说明</h3>
+        <ul>
+          <li>点击卡片“进入演示”打开对应专利</li>
+          <li>每个入口将要求输入访问口令</li>
+          <li>建议使用全屏模式观看展示</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="专利展示入口">
+      <article class="card">
+        <div class="num">PATENT 01</div>
+        <h2>智慧灯杆故障传导预测与协同诊断</h2>
+        <p>面向多挂载设备的跨设备故障传导识别、溯源与趋势预测。</p>
+        <a href="patent-1-locked.html" aria-label="进入专利一演示">
+          进入演示 →
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="num">PATENT 02</div>
+        <h2>多物理场数字孪生的机房健康管理</h2>
+        <p>在线自演化数字孪生与DRL优化控制，持续提升机房能效。</p>
+        <a href="patent-2-locked.html" aria-label="进入专利二演示">
+          进入演示 →
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="num">PATENT 03</div>
+        <h2>健康度驱动的算力可靠性调度</h2>
+        <p>健康感知调度与主动迁移，保障算力租赁SLA。</p>
+        <a href="patent-3-locked.html" aria-label="进入专利三演示">
+          进入演示 →
+        </a>
+      </article>
+    </section>
+
+    <footer>
+      诺丁汉（宁波保税区）区块链有限公司 · All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
